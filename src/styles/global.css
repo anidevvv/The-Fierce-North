@@ -3,6 +3,21 @@
 html {
   font-family: 'Playfair Display', serif;
 }
+@media screen and (max-width: 640px) {
+  #navbar-elmnt {
+    display: none;
+  
+}
+  }
+#navbar-ham {
+  display: none;}
+
+  @media screen and (max-width: 640px) {
+  #navbar-ham {
+    display: inline-block;
+  
+}
+  }
 
 [data-theme="fantasy"] {
   --color-base-100: oklch(100% 0 0);

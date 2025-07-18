@@ -3,7 +3,7 @@
 html {
   font-family: 'Playfair Display', serif;
 }
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 766px) {
   #navbar-elmnt {
     display: none;
   
@@ -12,12 +12,26 @@ html {
 #navbar-ham {
   display: none;}
 
-  @media screen and (max-width: 640px) {
+  @media screen and (max-width: 766px) {
   #navbar-ham {
     display: inline-block;
   
 }
   }
+
+  @keyframes rotateOnce {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate-animation {
+  animation: rotateOnce 0.5s ease-in-out;
+}
+
 
 [data-theme="fantasy"] {
   --color-base-100: oklch(100% 0 0);
@@ -53,4 +67,9 @@ html {
 :root {
   --color-primary: oklch(70% 0.18 305);
   --color-background: oklch(98% 0.01 240);
+}
+
+
+html.no-transition * {
+  transition: none !important;
 }

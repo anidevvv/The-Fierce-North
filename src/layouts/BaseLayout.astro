@@ -2,33 +2,74 @@
 import "../styles/global.css";
 ---
 
-<html lang="en" data-theme="fantasy">
+<html lang="en" data-theme="fantasy" id="root" class="">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Fierce North</title>
+    <script>
+  (() => {
+    const savedMode = localStorage.getItem("mode");
+    if (savedMode === "dark") {
+      document.documentElement.classList.add("dark");
+      document.body?.classList?.add("bg-gray-800", "text-white");
+      document.body?.classList?.remove("bg-white", "text-gray-800");
+    } else {
+      document.documentElement.classList.remove("dark");
+      document.body?.classList?.add("bg-white", "text-gray-800");
+      document.body?.classList?.remove("bg-gray-800", "text-white");
+    }
+  })();
+</script>
+
   </head>
-  <body class="flex flex-col min-h-screen bg-base-100 text-base-content">
+  <body id="body" class="flex flex-col min-h-screen bg-base-100 text-base-content">
     <!-- Header -->
     <header class="bg-neutral shadow-sm text-neutral-content px-6 py-6 ">
       <div class=" flex items-center justify-between">
-        <img class="w-8 h-8" src="\shape.png" alt="">
-        <div class="text-3xl font-bold tracking-wide text-gray-800">
-          The Fierce North<span class="text-gray-800">.</span>
+        <img id="shape-icon" class="w-8 h-8" src="/shape.png" alt="">
+        <div class="text-3xl font-bold tracking-wide ">
+          The Fierce North<span class="">.</span>
         </div>
         <!-- Navigation -->
-        <nav id="navbar-elmnt" class="space-x-6 text-2xl text-gray-800 font-medium">
+        <nav id="navbar-elmnt" class="space-x-6 text-2xl font-medium hidden md:flex">
           <a href="/" class="hover:underline">Home</a>
           <a href="/articles" class="bg-gray- hover:underline">Articles</a>
           <a href="/about" class="hover:underline">About</a>
         </nav>
         <div class="flex space-x-5">
-        <img class="w-8 h-8 cursor-pointer" src="/profile.svg" alt="">
-        <img class="w-8 h-8 cursor-pointer" src="/mode.svg" alt="">
-        <img id="navbar-ham" class="w-8 h-8 cursor-pointer" src="\ham.svg" alt="">
+        <!-- Profile Icon and Dropdown -->
+<div class="relative">
+  <img
+    id="profile-icon"
+    src="/profile.svg"
+    alt="Profile"
+    class="w-8 h-8 cursor-pointer"
+    
+  />
+
+  <!-- Dropdown Menu -->
+  <div
+    id="dropdown-menu"
+    class="absolute right-0 mt-2 w-32 shadow-lg rounded-md py-2 text-sm hidden z-50 bg-white text-gray-800"
+  >
+    <a href="/login" class="block px-4 py-2 bg-white text-gray-800 hover:bg-gray-100">Log In</a>
+    <a href="/signup" class="block px-4 py-2 bg-white text-gray-800 hover:bg-gray-100">Sign Up</a>
+  </div>
+</div>
+        <img id="mode-toggle"  src="/dark-mode.svg" alt="Toggle mode" class="w-8 h-8 cursor-pointer" >
+        <img id="navbar-ham" class="w-6 h-8 cursor-pointer block md:hidden" src="/ham.svg" alt="">
         </div>
         
       </div>
+      <div
+  id="mobile-menu"
+  class="absolute right-6 top-20 bg-white text-gray-800 shadow-md rounded-md py-2 px-4 space-y-2 hidden z-50"
+>
+  <a href="/" class="block hover:underline">Home</a>
+  <a href="/articles" class="block hover:underline">Articles</a>
+  <a href="/about" class="block hover:underline">About</a>
+</div>
     </header>
 
     <!-- Page Content -->
@@ -40,5 +81,13 @@ import "../styles/global.css";
     <footer class="bg-neutral text-neutral-content text-center text-sm py-6">
       © {new Date().getFullYear()} The Fierce North. All rights reserved.
     </footer>
+    
+    
+<div class="shooting-star-container">
+  <div class="shooting-star"></div>
+</div>
+
+<script type="module" src="/src/scripts/script.js"></script>
+
   </body>
 </html>

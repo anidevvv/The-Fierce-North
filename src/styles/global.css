@@ -35,3 +35,7 @@ html {
   --noise: 0;
 
 }
+:root {
+  --color-primary: oklch(70% 0.18 305);
+  --color-background: oklch(98% 0.01 240);
+}
